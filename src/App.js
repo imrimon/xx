@@ -1,21 +1,24 @@
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import logo from './logo.svg';
 import './App.css';
-import Blogs from './component/Blogs/Blogs';
-import Details from './component/Departments/Details/Details';
-import Doctors from './component/Doctors/Doctors';
-import Footer from './component/Footer/Footer';
-import Header from './component/Header/Header';
-import Home from './component/Home/Home';
-import Notfound from './component/Notfound/Notfound';
-import LoginRegistration from './component/User/Login/LoginRegistration';
-import PrivateRoute from './component/User/PrivateRoute/PrivateRoute';
-import AuthProvider from './Context/AuthProvider';
+import Home from './Pages/Home/Home';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import NotFound from './Pages/NotFound/NotFound';
+import Services from './Pages/Services/Services';
+import Teams from './Pages/Home/Teams/Teams';
+import Booking from './Pages/Booking/Booking/Booking';
+import Login from './Pages/Login/Login/Login';
+import Header from './Pages/Shared/Header/Header';
+import AuthProvider from './contexts/AuthProvider';
+import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
+import Registration from './Pages/Login/Registration/Registration';
+import Footer from './Pages/Shared/Footer/Footer';
+import Pricing from './Pages/Pricing/Pricing';
 
 function App() {
   return (
     <div className="App">
       <AuthProvider>
-        <BrowserRouter>
+        <Router>
           <Header></Header>
           <Switch>
             <Route exact path="/">
@@ -24,27 +27,30 @@ function App() {
             <Route path="/home">
               <Home></Home>
             </Route>
-            <Route path="/doctors">
-              <Doctors></Doctors>
-            </Route>
-            <PrivateRoute path="/blogs">
-              <Blogs></Blogs>
-            </PrivateRoute>
-            <PrivateRoute path="/details/:departmentId">
-              <Details></Details>
-            </PrivateRoute>
             <Route path="/login">
-              <LoginRegistration></LoginRegistration>
+              <Login></Login>
             </Route>
-            <Route path="/register">
-              <LoginRegistration></LoginRegistration>
+            <Route path="/teams">
+              <Teams></Teams>
             </Route>
+            <Route path="/services">
+              <Services></Services>
+            </Route>
+            <Route path="/registration">
+              <Registration></Registration>
+            </Route>
+            <Route path="/pricing">
+              <Pricing></Pricing>
+            </Route>
+            <PrivateRoute path="/booking/:serviceId">
+              <Booking></Booking>
+            </PrivateRoute>
             <Route path="*">
-              <Notfound></Notfound>
+              <NotFound></NotFound>
             </Route>
           </Switch>
-          <Footer></Footer>
-        </BrowserRouter>
+        </Router>
+        <Footer></Footer>
       </AuthProvider>
     </div>
   );
