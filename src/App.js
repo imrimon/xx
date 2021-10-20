@@ -1,54 +1,65 @@
-
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from '../src/pages/Shared/Header/Header'
-import Home from './pages/Home/Home/Home';
-import NotFound from './pages/NotFound/NotFound';
-import Footer from './pages/Shared/Footer/Footer';
-import Login from './pages/Login/Login/Login';
-import Registration from './pages/Registration/Registration';
-import Details from './pages/Details/Details';
-import AuthProvider from './pages/context/AuthProvider';
-import PrivateRoute from './pages/Login/PrivateRoute/PrivateRoute';
-
+import "bootstrap/dist/css/bootstrap.min.css";
+import { useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import About from "./components/About/About";
+import Contact from "./components/Contact/Contact";
+import Header from "./components/Header/Header";
+import Home from "./components/Home/Home";
+import Login from "./components/Login/Login";
+import Notfound from "./components/Notfound/Notfound";
+import PrivateRoute from "./components/privateroute/privateRoute";
+import Register from "./components/Register/Register";
+import ServiceDetail from "./components/Services/ServiceDetail";
+import Services from "./components/Services/Services";
 
 function App() {
+  const [test, setTest] = useState([]);
 
+  useEffect(() => {
+    fetch("./fakedata.json")
+      .then((res) => res.json())
+      .then((data) => setTest(data));
+  }, []);
   return (
-    <div className="App">
-      <AuthProvider>
-        <BrowserRouter>
-          <Header></Header>
-          <Switch>
-            <Route exact path='/'>
-              <Home></Home>
-            </Route>
-            <Route path='/home'>
-              <Home></Home>
-            </Route>
-            <Route path='/login'>
-              <Login></Login>
-            </Route>
-            <Route path='/registration'>
-              <Registration></Registration>
-            </Route>
-            <PrivateRoute path='/detail/:id'>
-              <Details></Details>
-            </PrivateRoute>
-            <Route to='*'>
-              <NotFound></NotFound>
-            </Route>
-          </Switch>
-          <Footer></Footer>
-        </BrowserRouter>
-      </AuthProvider>
-    </div>
+    <Router>
+      
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <Header />
+        <Switch>
+        <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/about">
+            <About />
+          </Route>
+          <PrivateRoute exact path="/contact">
+            <Contact />
+          </PrivateRoute>
+          <PrivateRoute exact path="/services">
+            <Services />
+          </PrivateRoute>
+          <Route exact path="/login">
+            <Login></Login>
+          </Route>
+          <Route exact path="/register">
+            <Register />
+          </Route>
+          <PrivateRoute exact path="/service/:serviceId">
+            <ServiceDetail></ServiceDetail>
+          </PrivateRoute>
+
+         
+          <Route exact path="/home">
+            <Home />
+          </Route>
+          <Route exact path="*">
+            <Notfound />
+          </Route>
+        </Switch>
+      
+    </Router>
   );
 }
-
-
-
-
 
 export default App;
