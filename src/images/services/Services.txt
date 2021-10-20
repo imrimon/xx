@@ -1,0 +1,8 @@
+1. Medical Checkup
+2. Dental Care
+3. Eye Care
+4. Laboratory Service
+5. Vaccination
+6. Cardiology
+7. FASTER FIRST AID
+8. INTENSIVE CARE
