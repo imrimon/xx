@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { Card, Col, Container, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import './Service.css'
-const Service = (props) => {
-    const { name, id, price, description, picture } = props.service;
+import React from 'react';
+import { Col } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 
+const Service = ({ service }) => {
+    const { id, name, description, img } = service;
     return (
-        <div className="service">
-            <img src={picture} style={{height: '30vh'}} alt="" />
-            <h2>{name}</h2>
-            <h4>Price: {price}</h4>
-            <p>{description}</p>
-            <Link to={`booking/${id}`}><button className="btn btn-primary">BOOK {name.toUpperCase()}</button></Link>
+        <div className="rounded  ">
+            <Col className='shadow mb-4'> <img style={{ width: "400px", height: '200px', borderRadius: '10px' }} src={img} alt="" /></Col>
+            <Col ><h4>{name}</h4></Col>
+            <Col><small>{description}</small></Col>
+
+            <NavLink to={`detail/${id}`}>
+                <Col><button className='mt-3 rounded bg-info text-white border border-white fs-5'>Details</button></Col>
+            </NavLink>
         </div>
     );
 };

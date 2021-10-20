@@ -1,37 +1,69 @@
-
 import React from 'react';
-import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import { Container, Form, FormControl, Nav, Navbar, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import useAuth from '../../../hooks/useAuth';
-
+import './Header.css'
 const Header = () => {
-    const { user, logOut } = useAuth()
+    const { user, logout, isLoading } = useAuth();
+    console.log(user)
+    if (isLoading) {
+        return <Spinner animation="border" variant="danger" />
+    }
     return (
-        <div>
-            <Navbar fixed="sticky" bg="dark" sticky="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
-                <Container>
-                    <Navbar.Brand href="#home">CaringYou</Navbar.Brand>
-                    <Nav className="me-auto">
-                        <Nav.Link as={Link} to="/home#home">Home</Nav.Link>
-                        <Nav.Link href="#services">Services</Nav.Link>
-                        <Nav.Link href="#teams">Team</Nav.Link>
-                        {user?.email ?
-                            <Button onClick={logOut}>Logout</Button> :
-                            <Nav.Link as={Link} to="/login">Login</Nav.Link>}
-                        <Link as={Link} to="/registration"><Button style={{height: '10vh', marginLeft:'2%'}}>Register</Button></Link>
+        <div className='pb-1'>
+            <Navbar fixed="top" className='text-white ' bg="info" expand="lg" >
+                <Container fluid className="container " >
+                    <Navbar.Brand className="text-white me-5 " href="#">Baby Care</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="navbarScroll" />
+                    <Navbar.Collapse id="navbarScroll"  >
+                        <Nav
+                            className="me-auto my-2 my-lg-0"
+                            style={{ maxHeight: '150px' }}
+                            navbarScroll
 
-                        <Navbar.Text>
-                            <h5 style={{ marginLeft: '30%' }}>Actived Id: <a href="#login">{user?.displayName}</a></h5>
-                        </Navbar.Text>
-                    </Nav>
+                        >
+                            <Nav.Link as={HashLink} className="text-white me-3" to='/home#home'>Home</Nav.Link>
+                            <Nav.Link className="text-white me-3" href="#action2">About </Nav.Link>
+                            <Nav.Link as={HashLink} className="text-white me-3" to='/home#services'>Services</Nav.Link>
+                            <Nav.Link className="text-white me-3" href="#action2">Doctors</Nav.Link>
+
+                            <Nav.Link className="text-white me-3" href="#action2">Contact </Nav.Link>
+
+                        </Nav >
+
+                        {user?.email ?
+                            <div className='d-flex flex-column flex-lg-row'>
+                                <Nav.Link onClick={logout} className="text-white me-2" as={Link} to='/login'>Logout</Nav.Link>
+                                <span className='mt-2 text-warning'>Sign in as: <span className='text-decoration-underline'>{user.displayName}</span></span>
+                            </div>
+
+                            :
+                            <div>
+                                <Nav.Link className="text-white me-2" as={Link} to='/login'>Login</Nav.Link>
+
+                            </div>
+
+
+                        }
+
+                        <Nav.Link className="text-white me-2" as={Link} to='/registration'>Registration</Nav.Link>
+
+                        <Form className="d-flex ">
+
+                            <FormControl
+                                type="search"
+                                placeholder="Search"
+                                className="me-2"
+                                aria-label="Search"
+                            />
+                        </Form>
+                    </Navbar.Collapse>
                 </Container>
             </Navbar>
-
-
 
         </div>
     );
 };
 
-export default Header
-
+export default Header;
