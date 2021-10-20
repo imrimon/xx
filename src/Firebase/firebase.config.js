@@ -1,9 +1,10 @@
 const firebaseConfig = {
-  apiKey: "AIzaSyA2gX3FYhTBCwGkH_W7pJp6fQcZX8KLPSg",
-  authDomain: "multi-healthcare-services.firebaseapp.com",
-  projectId: "multi-healthcare-services",
-  storageBucket: "multi-healthcare-services.appspot.com",
-  messagingSenderId: "870650868971",
-  appId: "1:870650868971:web:47e2dfa723522f7bed7aae"
+    apiKey: "AIzaSyCO5LXqJM6eZ5jVDvr5YEpKvZRCeAfFt2c",
+  authDomain: "healthcare-services-248f9.firebaseapp.com",
+  projectId: "healthcare-services-248f9",
+  storageBucket: "healthcare-services-248f9.appspot.com",
+  messagingSenderId: "1078274130437",
+  appId: "1:1078274130437:web:4708674106d0bbf435526c"
 };
-export default firebaseConfig;  
+
+export default firebaseConfig;

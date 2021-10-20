@@ -1,38 +1,95 @@
-.App {
+.App{
+  background-color: #070c1f;
 
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.hero{
+  min-height: 90vh;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.hero-txt h1{
+ font-size: 5rem;
 }
-
-.App-header {
-  background-color: #282c34;
+/* .header{
+  position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+  background-color: #070c1f; 
+  
+} */
+.header nav a{
+  text-decoration: none;
+  margin-right: 20px;
+  padding: 5px;
+}
+.navbar-link{
+  margin-left: 20%;
+}
+.header hr{
+  background-color: aqua;
+}
+.services{
+  min-height: 170vh;
+}
+.my-card{
+  background-color: #070c1f; 
+}
+.service-details{
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.shedule-img{
+  margin-left: 33%;
+}
+.login-form{
+  min-height: 100vh;
 }
 
-.App-link {
-  color: #61dafb;
+.apoinment{
+  min-height: 100vh;
+}
+.apoinment-input input{
+    background-color: #070c1f;
+    outline: none;
+    border: none;
+    font-size: 1.7rem;
+    border-bottom: 1px solid aqua;
+}
+.login-input input{
+    background-color: #070c1f;
+    outline: none;
+    border: none;
+    font-size: 1.7rem;
+    border-bottom: 1px solid aqua;
+    color: azure;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.label{
+  font-size: 1.3rem;
+}
+.contact{
+  min-height: 100vh;
+}
+.contact-container{
+  background-color: #e9edee ;
+  min-height: 50vh;
+}
+.popup img{
+  background-color: azure;
+  /* height: 50px; */
+  /* width: 50px; */
+  /* padding: 20px; */
+  transition: all .2s ease-in-out; 
+}
+.popup img:hover {
+  transform: scale(1.1); 
+}
+.call-work{
+  line-height: 0.5em;
+}
+.footer hr{
+  background-color: aqua;
+}
+.footer-txt {
+  line-height: .5em;
+}
+.footer-link{
+  line-height: .5em;
 }
